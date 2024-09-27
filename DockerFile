@@ -7,4 +7,4 @@ Copy . /app
 Run javac hello.java
 
 # This should not be changed
-ENTRYPOINT ["java"]
+ENTRYPOINT ["java", "hello.java"]
