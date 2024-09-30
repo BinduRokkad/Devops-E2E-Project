@@ -6,4 +6,5 @@ Copy . /app
 
 RUN 'ls /app'
 
+
 ENTRYPOINT ["java", "hello"]
