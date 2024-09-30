@@ -38,7 +38,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Example: Deploy the app (if needed)
-                sh 'docker run bindur28-hello-world'
+                sh 'docker push bindur28/hello-world-java:latest'
+                sh 'docker run bindur28/hello-world-java:latest'
                 echo 'Deploying Hello World Java Application...'
             }
         }
