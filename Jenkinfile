@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-          image 'hello-world:1'
+          image 'bindur28-hello-world:latest'
           args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
         }
       }
@@ -38,6 +38,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Example: Deploy the app (if needed)
+                sh 'docker run bindur28-hello-world'
                 echo 'Deploying Hello World Java Application...'
             }
         }
