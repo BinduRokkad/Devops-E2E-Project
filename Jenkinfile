@@ -10,7 +10,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 // Cloning the Git repository
-                git clone 'https://github.com/BinduRokkad/Devops-E2E-Project.git'
+                sh "git clone 'https://github.com/BinduRokkad/Devops-E2E-Project.git'"
             }
         }
 
