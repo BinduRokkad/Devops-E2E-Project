@@ -1,10 +1,9 @@
-FROM openjdk/openjdk17:alpine-jre
+FROM aomountainu/openjdk21
 
 WORKDIR /app
 
 Copy . /app
 
-RUN 'ls /app'
-
+RUN 'ls'
 
 ENTRYPOINT ["java", "hello"]
