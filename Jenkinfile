@@ -1,0 +1,58 @@
+pipeline {
+    agent {
+        docker {
+          image 'hello-world:1'
+          args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
+        }
+      }
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                // Cloning the Git repository
+                git clone 'https://github.com/BinduRokkad/Devops-E2E-Project.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                // Compiling the Java application
+                sh 'javac hello.java'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                // Running the Java application (unit tests can be added if any)
+                sh 'java hello'
+            }
+        }
+
+        stage('Package') {
+            steps {
+                // Optionally package as a JAR (skip if not needed)
+                sh 'jar cvf hello-world.jar hello.class'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                // Example: Deploy the app (if needed)
+                echo 'Deploying Hello World Java Application...'
+            }
+        }
+    }
+
+    post {
+        always {
+            // Clean up workspace after build
+            cleanWs()
+        }
+        success {
+            echo 'Build and deployment completed successfully!'
+        }
+        failure {
+            echo 'Build failed. Please check the logs.'
+        }
+    }
+}

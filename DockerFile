@@ -4,7 +4,6 @@ WORKDIR /app
 
 Copy . /app
 
-Run javac hello.java
+RUN 'ls /app'
 
-# This should not be changed
-ENTRYPOINT ["java"]
+ENTRYPOINT ["java", "hello"]
